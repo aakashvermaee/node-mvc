@@ -1,0 +1,24 @@
+{
+  "name": "node-mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^18.3.2",
+    "moment": "^2.24.0",
+    "sequelize": "^5.17.1",
+    "slug": "^1.1.0",
+    "sqlite3": "^4.1.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "nodemon": "^1.19.1"
+  }
+}
