@@ -1,4 +1,5 @@
 "use strict";
+const path = require('path');
 
 const Hapi = require("@hapi/hapi");
 
@@ -18,6 +19,24 @@ async function init() {
     // This code is going to synchronize the models to our database and,
     // once that is done, the server will be started
     await Models.sequelize.sync();
+
+    await server.register([
+      require('@hapi/vision'),
+      require('inert'),
+      require("../lib/routes")
+    ]);
+
+    // View Settings
+    server.views({
+      engines: {
+        pug: require('pug')
+      },
+      path: path.join(__dirname, '../lib/views'),
+      compileOptions: {
+        pretty: false
+      },
+      isCached: config.env === 'production'
+    });
 
     await server.start();
     console.log(`Server running on: ${server.info.uri}`);
